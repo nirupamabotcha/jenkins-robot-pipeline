@@ -1,12 +1,13 @@
 pipeline {
     agent any
     
-    triggers {
-        // Trigger the pipeline on push to main or dev branch
-        githubPush(
-            branches: ['main', 'dev']
-        )
-    }
+    // triggers {
+    //     // Trigger the pipeline on push to repository
+    //     githubPush()
+        
+    //     // Alternative: Poll SCM periodically
+    //     // pollSCM('H/15 * * * *')  // Polls every 15 minutes
+    // }
     
     environment {
         // Define environment variables
