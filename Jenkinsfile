@@ -1,13 +1,13 @@
 pipeline {
     agent any
     
-    // triggers {
-    //     // Trigger the pipeline on push to repository
-    //     githubPush()
+    triggers {
+        // Trigger the pipeline on push to repository
+        githubPush()
         
-    //     // Alternative: Poll SCM periodically
-    //     // pollSCM('H/15 * * * *')  // Polls every 15 minutes
-    // }
+        // Alternative: Poll SCM periodically
+        // pollSCM('H/15 * * * *')  // Polls every 15 minutes
+    }
     
     environment {
         // Define environment variables
@@ -28,12 +28,12 @@ pipeline {
             steps {
                 // Create a Python virtual environment and install dependencies
                 sh '''
-                    python -m venv venv
+                    python3 -m venv venv
                     . venv/bin/activate
-                    pip install --upgrade pip
-                    pip install robotframework
-                    pip install robotframework-seleniumlibrary
-                    pip install robotframework-requests
+                    pip3 install --upgrade pip
+                    pip3 install robotframework
+                    pip3 install robotframework-seleniumlibrary
+                    pip3 install robotframework-requests
                 '''
                 echo 'Environment setup completed'
             }
@@ -68,7 +68,7 @@ pipeline {
                 // Run static code analysis (optional)
                 sh '''
                     . venv/bin/activate
-                    pip install pylint
+                    pip3 install pylint
                     pylint --exit-zero src/
                 '''
                 echo 'Code analysis completed'
